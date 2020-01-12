@@ -22,7 +22,7 @@ class NewGestureForm extends Component {
             this.setState({ success: true})
 
             // Force a refresh of the current page. The new gesture page has a props object of gesture_id
-            Router.replaceRoute(`/gestures/${this.props.gesture_id}`)
+            //Router.replaceRoute(`/gestures/${this.props.gesture_id}`)
 
         } catch (err) {
             this.setState({ errorMessage: err.message })
@@ -41,6 +41,7 @@ class NewGestureForm extends Component {
                 <Form.Field>
                     <label>Enter a name for your gesture:</label>
                     <Input 
+                        style={{ width: '30vw' }} 
                         label="gesture" 
                         labelPosition="right"
                         value={this.state.value} 
@@ -48,8 +49,17 @@ class NewGestureForm extends Component {
                     />
                 </Form.Field>
 
+                <Form.Field>
+                    <label>Enter a description for your gesture:</label>
+                    <Input 
+                        style={{ width: '30vw' }}
+                        value={this.state.value} 
+                        onChange={event => this.setState({ value: event.target.value })} 
+                    />
+                </Form.Field>
+
                 <Message
-                        style={{ overflowWrap: 'break-word' }} 
+                        style={{ width: '30vw', overflowWrap: 'break-word' }} 
                         success >
                         <Message.Content>
                             <Message.Header>Success</Message.Header>
@@ -58,14 +68,14 @@ class NewGestureForm extends Component {
                 </Message>  
 
                 <Message
-                        style={{ overflowWrap: 'break-word' }}  
+                        style={{ width: '30vw', overflowWrap: 'break-word' }}  
                         error header="Something went wrong!" 
                         content={this.state.errorMessage} 
                 />
 
                 <Message icon
                         hidden={!this.state.loading}
-                        style={{ overflowWrap: 'break-word' }} >
+                        style={{ width: '30vw', overflowWrap: 'break-word' }} >
                         <Icon name='circle notched' loading />
                         <Message.Content>
                             <Message.Header>Creating a new gesture!</Message.Header>
@@ -74,7 +84,7 @@ class NewGestureForm extends Component {
                 </Message>
 
                 <Button primary loading={this.state.loading}>
-                    Create
+                    Create Gesture
                 </Button>
             </Form>
         )
