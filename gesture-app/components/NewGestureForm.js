@@ -10,7 +10,6 @@ class NewGestureForm extends Component {
         loading: false,
         success: false
     }
-
     // Function to handle onSubmit for the form
     onSubmit = async (event) => {
         event.preventDefault()

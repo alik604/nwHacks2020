@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Webcam from "react-webcam";
 import { Button, Form, Message, Icon, Progress } from 'semantic-ui-react'
+const axios = require('axios');
+
 
 class WebcamCapture extends Component {
     
@@ -44,6 +46,16 @@ class WebcamCapture extends Component {
 
       this.setState({ loading: false });
       console.log(this.state.images);
+      axios.post('/newImages', {
+        data: this.state.images      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
     };
   
     render() {
